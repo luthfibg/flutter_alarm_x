@@ -18,7 +18,7 @@ class _ClockPageState extends State<ClockPage> {
       backgroundColor: black87a,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text('Sensclo'),
+        title: const Text('Sensicle'),
       ),
       body: Container(
         alignment: Alignment.center,
