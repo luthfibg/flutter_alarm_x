@@ -1,6 +1,6 @@
 # nfp110
 
-A new Flutter project.
+A clock app project. This is an imaginative first direct-usable app. We need support to make it happen.
 
 ## Getting Started
 
