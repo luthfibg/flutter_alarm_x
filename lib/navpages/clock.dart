@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nfp110/customs/clock_view.dart';
 
 class ClockPage extends StatefulWidget {
   const ClockPage({super.key});
@@ -17,19 +18,11 @@ class _ClockPageState extends State<ClockPage> {
       backgroundColor: black87a,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text('Sensclo'),
+        title: const Text('Sensicle'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Clock Page',
-              style: TextStyle(color: primaryBlue),
-            ),
-          ],
-        ),
+      body: Container(
+        alignment: Alignment.center,
+        child: const ClockView(),
       ),
     );
   }
