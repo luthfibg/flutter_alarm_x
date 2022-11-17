@@ -15,6 +15,7 @@ class _ClockPageState extends State<ClockPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: black87a,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Sensclo'),
