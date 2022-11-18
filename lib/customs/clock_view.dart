@@ -64,7 +64,7 @@ class ClockPainter extends CustomPainter {
     var centerFillBrush = Paint()..color = primaryBlue;
 
     var secHandBrush = Paint()
-      ..color = Colors.orange[800]!
+      ..color = Colors.orange[500]!
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 6;

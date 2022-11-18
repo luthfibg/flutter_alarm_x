@@ -26,26 +26,38 @@ class _ClockPageState extends State<ClockPage> {
         padding: const EdgeInsets.all(32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Expanded(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Expanded(
               child: Text(
                 'Clock',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
-            Expanded(
+            const Expanded(
               child: Text(
                 'Clock',
-                style: TextStyle(color: Colors.white, fontSize: 54),
+                style: TextStyle(color: Colors.white, fontSize: 56),
               ),
             ),
             Expanded(
-              child: Text(
-                'Clock',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              child: Column(
+                children: const [
+                  Padding(padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 14.0)),
+                  Text(
+                    'Clock',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
               ),
             ),
-            ClockView(),
+            const ClockView(),
+            const Expanded(
+              child: Text(
+                'Time Zone',
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
+            ),
           ],
         ),
       ),
