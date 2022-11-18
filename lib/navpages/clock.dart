@@ -20,9 +20,18 @@ class _ClockPageState extends State<ClockPage> {
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Sensicle'),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: const ClockView(),
+      body: SizedBox(
+        child: Column(
+          children: const [
+            Expanded(
+              child: Text(
+                'Clock',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            ClockView(),
+          ],
+        ),
       ),
     );
   }

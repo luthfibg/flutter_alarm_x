@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class ClockView extends StatefulWidget {
@@ -11,22 +10,25 @@ class ClockView extends StatefulWidget {
 }
 
 class _ClockViewState extends State<ClockView> {
-  final black87a = const Color.fromARGB(221, 26, 26, 26);
-  final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
-
   @override
   void initState() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
     super.initState();
   }
 
+  final black87a = const Color.fromARGB(221, 26, 26, 26);
+  final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: black87a,
-      body: Center(
+    return SizedBox(
+      // backgroundColor: black87a,
+      height: 300,
+      child: Center(
         child: Transform.rotate(
           angle: -pi / 2,
           child: SizedBox(
