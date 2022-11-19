@@ -29,7 +29,10 @@ class _ClockPageState extends State<ClockPage> {
       backgroundColor: black87a,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: const Text('Sensicle'),
+        title: const Text(
+          'Sensicle',
+          style: TextStyle(fontFamily: 'avenir'),
+        ),
       ),
       body: Container(
         height: 500,
@@ -48,8 +51,11 @@ class _ClockPageState extends State<ClockPage> {
                         padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0)),
                     Text(
                       formattedTime,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 999),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 999,
+                        fontFamily: 'avenir',
+                      ),
                     ),
                   ],
                 ),
@@ -63,7 +69,11 @@ class _ClockPageState extends State<ClockPage> {
                         padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0)),
                     Text(
                       formattedDate,
-                      style: const TextStyle(color: Colors.white, fontSize: 40),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 40,
+                        fontFamily: 'avenir',
+                      ),
                     ),
                   ],
                 ),
@@ -73,7 +83,11 @@ class _ClockPageState extends State<ClockPage> {
             const Expanded(
               child: Text(
                 'Time Zone',
-                style: TextStyle(color: Colors.white, fontSize: 22),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontFamily: 'avenir',
+                ),
               ),
             ),
             Expanded(
@@ -88,7 +102,11 @@ class _ClockPageState extends State<ClockPage> {
                   ),
                   Text(
                     'UTC $offSetSign$timezoneString',
-                    style: const TextStyle(color: Colors.white, fontSize: 16),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontFamily: 'avenir',
+                    ),
                   ),
                 ],
               ),
