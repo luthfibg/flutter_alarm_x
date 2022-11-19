@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nfp110/data.dart';
 
 class MyAlarm extends StatefulWidget {
   const MyAlarm({super.key});
@@ -20,14 +21,65 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
         elevation: 0,
         title: const Text('Alarmku'),
       ),
-      body: Center(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Alarm Page',
-              style: TextStyle(color: primaryBlue),
+            Expanded(
+              child: ListView(
+                children: alarms.map((alarm) {
+                  return Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.yellow, Colors.green],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: const [
+                                Icon(
+                                  Icons.label,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  'Office',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'avenir',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Switch(
+                              value: true,
+                              onChanged: (bool value) {},
+                              activeColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+            Center(
+              child: Text(
+                'Alarm Page',
+                style: TextStyle(color: primaryBlue),
+              ),
             ),
           ],
         ),
