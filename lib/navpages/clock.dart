@@ -18,6 +18,12 @@ class _ClockPageState extends State<ClockPage> {
     var now = DateTime.now();
     var formattedTime = DateFormat('HH:mm').format(now);
     var formattedDate = DateFormat('EEE, d MMM').format(now);
+    var timezoneString = now.timeZoneOffset.toString().split('.').first;
+    var offSetSign = '';
+    if (!timezoneString.startsWith('-')) {
+      offSetSign = '+';
+      print(timezoneString);
+    }
 
     return Scaffold(
       backgroundColor: black87a,
@@ -67,22 +73,22 @@ class _ClockPageState extends State<ClockPage> {
             const Expanded(
               child: Text(
                 'Time Zone',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: Colors.white, fontSize: 22),
               ),
             ),
             Expanded(
               child: Row(
-                children: const [
-                  Icon(
+                children: [
+                  const Icon(
                     Icons.language,
                     color: Colors.white,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Text(
-                    'UTC',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    'UTC $offSetSign$timezoneString',
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
               ),
