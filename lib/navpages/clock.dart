@@ -34,85 +34,95 @@ class _ClockPageState extends State<ClockPage> {
           style: TextStyle(fontFamily: 'avenir'),
         ),
       ),
-      body: Container(
-        height: 500,
-        width: 500,
-        padding: const EdgeInsets.all(26),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: FittedBox(
-                fit: BoxFit.contain,
-                child: Column(
-                  children: [
-                    const Padding(
-                        padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0)),
-                    Text(
-                      formattedTime,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 999,
-                        fontFamily: 'avenir',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: FittedBox(
-                child: Column(
-                  children: [
-                    const Padding(
-                        padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0)),
-                    Text(
-                      formattedDate,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontFamily: 'avenir',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const ClockView(),
-            const Expanded(
-              child: Text(
-                'Time Zone',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontFamily: 'avenir',
-                ),
-              ),
-            ),
-            Expanded(
-              child: Row(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 36),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
-                    Icons.language,
-                    color: Colors.white,
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          formattedTime,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 64,
+                            fontFamily: 'avenir',
+                          ),
+                        ),
+                        Text(
+                          formattedDate,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'avenir',
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(
-                    width: 16,
+                  Flexible(
+                    flex: 6,
+                    fit: FlexFit.tight,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: ClockView(
+                        size: MediaQuery.of(context).size.height / 3,
+                      ),
+                    ),
                   ),
-                  Text(
-                    'UTC $offSetSign$timezoneString',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'avenir',
+                  Flexible(
+                    flex: 2,
+                    fit: FlexFit.tight,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Time Zone',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontFamily: 'avenir',
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.language,
+                              color: Colors.white,
+                            ),
+                            const SizedBox(
+                              width: 16,
+                            ),
+                            Text(
+                              'UTC $offSetSign$timezoneString',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: 'avenir',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
