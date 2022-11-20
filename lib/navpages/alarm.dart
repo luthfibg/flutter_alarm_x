@@ -1,3 +1,5 @@
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nfp110/data.dart';
 
@@ -19,7 +21,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: const Text('Alarmku'),
+        title: const Text('Alarm'),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 5),
@@ -28,9 +30,9 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
           children: [
             Expanded(
               child: ListView(
-                children: alarms.map((alarm) {
+                children: alarms.map<Widget>((alarm) {
                   return Container(
-                    margin: const EdgeInsets.only(top: 30),
+                    margin: const EdgeInsets.only(bottom: 30),
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                     decoration: BoxDecoration(
@@ -113,12 +115,51 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                       ],
                     ),
                   );
-                }).toList(),
+                }).followedBy([
+                  DottedBorder(
+                    color: primaryBlue,
+                    strokeWidth: 3,
+                    borderType: BorderType.RRect,
+                    radius: const Radius.circular(24),
+                    dashPattern: const [5, 4],
+                    child: Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(158, 41, 93, 138),
+                          borderRadius: BorderRadius.all(Radius.circular(18))),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 16),
+                      height: 120,
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/add_alarm24.png',
+                              scale: 0.75,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              'Add Alarm',
+                              style: TextStyle(
+                                color: primaryBlue,
+                                fontFamily: 'avenir',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ]).toList(),
               ),
             ),
-            Center(
+            Align(
+              alignment: Alignment.topCenter,
               child: Text(
-                'Alarm Page',
+                'Under Development !',
                 style: TextStyle(color: primaryBlue),
               ),
             ),
