@@ -22,7 +22,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
         title: const Text('Alarmku'),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,15 +30,26 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
               child: ListView(
                 children: alarms.map((alarm) {
                   return Container(
-                    decoration: const BoxDecoration(
+                    margin: const EdgeInsets.only(top: 30),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.yellow, Colors.green],
+                        colors: alarm.gradientColors,
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      boxShadow: [
+                        BoxShadow(
+                            color: alarm.gradientColors.last.withOpacity(0.5),
+                            blurRadius: 3,
+                            spreadRadius: 0,
+                            offset: const Offset(4, 4)),
+                      ],
+                      borderRadius: const BorderRadius.all(Radius.circular(16)),
                     ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,6 +77,36 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                               value: true,
                               onChanged: (bool value) {},
                               activeColor: Colors.white,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        const Text(
+                          'Mon-Fri',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'avenir',
+                            fontSize: 18,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text(
+                              '07:00',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'avenir',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 30,
+                              ),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              size: 23,
+                              color: Colors.white,
                             ),
                           ],
                         ),
