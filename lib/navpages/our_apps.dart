@@ -20,7 +20,7 @@ class OurApps extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Our Apps',
+              'Under Development!',
               style: TextStyle(color: primaryBlue),
             ),
           ],

@@ -27,13 +27,13 @@ class _ClockPageState extends State<ClockPage> {
 
     return Scaffold(
       backgroundColor: black87a,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title: const Text(
-          'Sensicle',
-          style: TextStyle(fontFamily: 'avenir'),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   title: const Text(
+      //     'Sensicle',
+      //     style: TextStyle(fontFamily: 'avenir'),
+      //   ),
+      // ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -44,16 +44,36 @@ class _ClockPageState extends State<ClockPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Flexible(
-                    flex: 2,
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Sensicle',
+                          style: TextStyle(
+                            color: primaryBlue,
+                            fontSize: 28,
+                            fontFamily: 'avenir',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    flex: 3,
                     fit: FlexFit.tight,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           formattedTime,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: primaryBlue,
                             fontSize: 64,
                             fontFamily: 'avenir',
                           ),
@@ -62,7 +82,7 @@ class _ClockPageState extends State<ClockPage> {
                           formattedDate,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontFamily: 'avenir',
                           ),
                         ),
@@ -85,10 +105,10 @@ class _ClockPageState extends State<ClockPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Time Zone',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: primaryBlue,
                             fontSize: 22,
                             fontFamily: 'avenir',
                           ),
@@ -100,7 +120,7 @@ class _ClockPageState extends State<ClockPage> {
                           children: [
                             const Icon(
                               Icons.language,
-                              color: Colors.white,
+                              color: Colors.red,
                             ),
                             const SizedBox(
                               width: 16,

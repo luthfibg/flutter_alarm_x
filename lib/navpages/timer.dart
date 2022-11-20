@@ -25,7 +25,7 @@ class _MyTimerState extends State<MyTimer> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Timer Page',
+              'Under Development!',
               style: TextStyle(color: primaryBlue),
             ),
           ],
