@@ -1,12 +1,16 @@
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:nfp110/navpages/alarm.dart';
 import 'package:nfp110/navpages/clock.dart';
 import 'package:nfp110/navpages/our_apps.dart';
 import 'package:nfp110/navpages/sensor.dart';
 import 'package:nfp110/navpages/timer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 void main() {
   runApp(const MyApp());
