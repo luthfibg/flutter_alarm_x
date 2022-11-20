@@ -19,17 +19,30 @@ class _MyTimerState extends State<MyTimer> {
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Timer'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Under Development!',
-              style: TextStyle(color: primaryBlue),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    fit: FlexFit.tight,
+                    child: Column(),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+          Text(
+            'Under Development!',
+            style: TextStyle(color: primaryBlue),
+          ),
+        ],
       ),
     );
   }
