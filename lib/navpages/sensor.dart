@@ -25,7 +25,7 @@ class _MySensorState extends State<MySensor> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Sensor Page',
+              'Under Development!',
               style: TextStyle(color: primaryBlue),
             ),
           ],

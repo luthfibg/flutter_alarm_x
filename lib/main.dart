@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:double_back_to_close/double_back_to_close.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,29 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('sc_launcher');
+  final DarwinInitializationSettings initializationSettingsDarwin =
+      DarwinInitializationSettings(
+          requestAlertPermission: true,
+          requestBadgePermission: true,
+          requestSoundPermission: true,
+          requestCriticalPermission: false,
+          onDidReceiveLocalNotification: ((id, title, body, payload) async {}));
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+    iOS: initializationSettingsDarwin,
+  );
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+      onDidReceiveNotificationResponse: (payload) async {
+    if (payload != null) {
+      debugPrint('notification payload: $payload');
+    }
+  });
+
   runApp(const MyApp());
 }
 
