@@ -18,7 +18,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
+      AndroidInitializationSettings('sc_launcher');
   final DarwinInitializationSettings initializationSettingsDarwin =
       DarwinInitializationSettings(
           requestAlertPermission: true,

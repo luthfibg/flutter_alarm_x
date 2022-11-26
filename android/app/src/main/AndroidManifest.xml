@@ -7,7 +7,7 @@
    <application
         android:label="nfp110"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/sc_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
