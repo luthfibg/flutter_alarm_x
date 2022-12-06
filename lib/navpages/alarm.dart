@@ -1,7 +1,14 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:nfp110/data.dart';
+import 'package:nfp110/main.dart';
+
+import '../notification_service.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 class MyAlarm extends StatefulWidget {
   const MyAlarm({super.key});
@@ -11,6 +18,12 @@ class MyAlarm extends StatefulWidget {
 }
 
 class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+    NotificationService.initialize(flutterLocalNotificationsPlugin);
+  }
+
   final black87a = const Color.fromARGB(221, 26, 26, 26);
   final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
 
@@ -131,7 +144,13 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                           horizontal: 32, vertical: 16),
                       height: 120,
                       child: OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          NotificationService.showAlarmNotification(
+                            title: 'Sensicle',
+                            body: 'Wake up now!',
+                            fln: flutterLocalNotificationsPlugin,
+                          );
+                        },
                         child: Column(
                           children: [
                             Image.asset(
@@ -167,5 +186,32 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  void scheduledAlarm() async {
+    var scheduledNotificationDateTime =
+        DateTime.now().add(const Duration(seconds: 10));
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+      'alarm_notif',
+      'alarm_notif',
+      channelDescription: 'Channel for Alarm Notification',
+      icon: 'sc_launcher',
+      sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
+      largeIcon: DrawableResourceAndroidBitmap('sc_launcher'),
+    );
+
+    var iOSPlatformChannelSpecifics = const DarwinNotificationDetails(
+      sound: 'a_long_cold_sting.wav',
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
+    var platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+      iOS: iOSPlatformChannelSpecifics,
+    );
+    await flutterLocalNotificationsPlugin.show(0, 'Office',
+        'Good Morning! Time to go to Office!', platformChannelSpecifics,
+        payload: 'sc_launcher');
   }
 }
