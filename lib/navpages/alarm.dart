@@ -5,6 +5,11 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:nfp110/data.dart';
 import 'package:nfp110/main.dart';
 
+import '../notification_service.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 class MyAlarm extends StatefulWidget {
   const MyAlarm({super.key});
 
@@ -13,6 +18,12 @@ class MyAlarm extends StatefulWidget {
 }
 
 class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+    NotificationService.initialize(flutterLocalNotificationsPlugin);
+  }
+
   final black87a = const Color.fromARGB(221, 26, 26, 26);
   final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
 
@@ -134,7 +145,11 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                       height: 120,
                       child: OutlinedButton(
                         onPressed: () {
-                          scheduledAlarm();
+                          NotificationService.showAlarmNotification(
+                            title: 'Sensicle',
+                            body: 'Wake up now!',
+                            fln: flutterLocalNotificationsPlugin,
+                          );
                         },
                         child: Column(
                           children: [

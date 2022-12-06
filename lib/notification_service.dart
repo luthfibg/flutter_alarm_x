@@ -1,19 +1,38 @@
-import 'dart:io';
-import 'dart:ui';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:rxdart/subjects.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 class NotificationService {
-  NotificationService();
+  static Future initialize(
+      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
+    var androidInitializationSettings =
+        const AndroidInitializationSettings('sc_launcher');
+    var darwinInitializationSettings = const DarwinInitializationSettings();
+    var initializationSettings = InitializationSettings(
+        android: androidInitializationSettings,
+        iOS: darwinInitializationSettings);
 
-  final _localNotifications = FlutterLocalNotificationsPlugin();
-  final BehaviorSubject<String> behaviorSubject = BehaviorSubject();
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
 
-  Future<void> initializePlatformNotifications() async {
-    const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('sc_launcher');
+  static Future showAlarmNotification(
+      {var id = 0,
+      required String title,
+      required String body,
+      var payload,
+      required FlutterLocalNotificationsPlugin fln}) async {
+    AndroidNotificationDetails androidPlatformChannelSpecifics =
+        const AndroidNotificationDetails(
+      'channel_id',
+      'my_channel',
+      playSound: true,
+      sound: RawResourceAndroidNotificationSound('notification_sound'),
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+
+    var notificationDetails = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+        iOS: const DarwinNotificationDetails());
+
+    await fln.show(0, title, body, notificationDetails);
   }
 }
