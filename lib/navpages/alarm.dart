@@ -145,9 +145,9 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                       height: 120,
                       child: OutlinedButton(
                         onPressed: () {
-                          NotificationService.showAlarmNotification(
-                            title: 'Sensicle',
-                            body: 'Wake up now!',
+                          NotificationService.scheduledAlarm(
+                            title: 'Good Morning',
+                            body: 'Hey! Wake up',
                             fln: flutterLocalNotificationsPlugin,
                           );
                         },
@@ -186,32 +186,5 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
         ),
       ),
     );
-  }
-
-  void scheduledAlarm() async {
-    var scheduledNotificationDateTime =
-        DateTime.now().add(const Duration(seconds: 10));
-    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
-      'alarm_notif',
-      'alarm_notif',
-      channelDescription: 'Channel for Alarm Notification',
-      icon: 'sc_launcher',
-      sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-      largeIcon: DrawableResourceAndroidBitmap('sc_launcher'),
-    );
-
-    var iOSPlatformChannelSpecifics = const DarwinNotificationDetails(
-      sound: 'a_long_cold_sting.wav',
-      presentAlert: true,
-      presentBadge: true,
-      presentSound: true,
-    );
-    var platformChannelSpecifics = NotificationDetails(
-      android: androidPlatformChannelSpecifics,
-      iOS: iOSPlatformChannelSpecifics,
-    );
-    await flutterLocalNotificationsPlugin.show(0, 'Office',
-        'Good Morning! Time to go to Office!', platformChannelSpecifics,
-        payload: 'sc_launcher');
   }
 }
