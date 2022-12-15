@@ -146,9 +146,10 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                       child: OutlinedButton(
                         onPressed: () {
                           NotificationService.scheduledAlarm(
-                              title: 'Good Morning',
-                              body: 'Hey! Wake up',
-                              fln: flutterLocalNotificationsPlugin);
+                            title: 'Good Morning',
+                            body: 'Hey! Wake up',
+                            fln: flutterLocalNotificationsPlugin,
+                          );
                         },
                         child: Column(
                           children: [

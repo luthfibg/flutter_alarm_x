@@ -55,7 +55,7 @@ class NotificationService {
     );
 
     var iOSPlatformChannelSpecifics = const DarwinNotificationDetails(
-      sound: 'notification_sound.mp3',
+      sound: 'notification_sound.wav',
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
