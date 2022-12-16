@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:nfp110/data.dart';
 import 'package:nfp110/main.dart';
+import 'package:nfp110/models/alarm_info.dart';
 
 import '../notification_service.dart';
 
@@ -50,13 +51,13 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: alarm.gradientColors,
+                        colors: , // alarm.gradientColors,
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
                       boxShadow: [
                         BoxShadow(
-                            color: alarm.gradientColors.last.withOpacity(0.5),
+                            color: Colors.green.withOpacity(0.5),
                             blurRadius: 3,
                             spreadRadius: 0,
                             offset: const Offset(4, 4)),
