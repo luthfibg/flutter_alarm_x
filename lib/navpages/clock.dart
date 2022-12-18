@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nfp110/customs/clock_view.dart';
+import '../customs/theme.dart';
 
 class ClockPage extends StatefulWidget {
   const ClockPage({super.key});
@@ -10,9 +11,6 @@ class ClockPage extends StatefulWidget {
 }
 
 class _ClockPageState extends State<ClockPage> {
-  final black87a = const Color.fromARGB(221, 26, 26, 26);
-  final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
-
   @override
   Widget build(BuildContext context) {
     var now = DateTime.now();
@@ -26,7 +24,7 @@ class _ClockPageState extends State<ClockPage> {
     }
 
     return Scaffold(
-      backgroundColor: black87a,
+      backgroundColor: CustomColors.backgroundColor,
       // appBar: AppBar(
       //   backgroundColor: Theme.of(context).primaryColor,
       //   title: const Text(
@@ -56,7 +54,7 @@ class _ClockPageState extends State<ClockPage> {
                         Text(
                           'Sensicle',
                           style: TextStyle(
-                            color: primaryBlue,
+                            color: CustomColors.primaryBlue,
                             fontSize: 28,
                             fontFamily: 'avenir',
                           ),
@@ -73,7 +71,7 @@ class _ClockPageState extends State<ClockPage> {
                         Text(
                           formattedTime,
                           style: TextStyle(
-                            color: primaryBlue,
+                            color: CustomColors.primaryBlue,
                             fontSize: 64,
                             fontFamily: 'avenir',
                           ),
@@ -108,7 +106,7 @@ class _ClockPageState extends State<ClockPage> {
                         Text(
                           'Time Zone',
                           style: TextStyle(
-                            color: primaryBlue,
+                            color: CustomColors.primaryBlue,
                             fontSize: 22,
                             fontFamily: 'avenir',
                           ),
@@ -118,17 +116,17 @@ class _ClockPageState extends State<ClockPage> {
                         ),
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               Icons.language,
-                              color: Colors.red,
+                              color: CustomColors.onfire,
                             ),
                             const SizedBox(
                               width: 16,
                             ),
                             Text(
                               'UTC $offSetSign$timezoneString',
-                              style: const TextStyle(
-                                color: Colors.white,
+                              style: TextStyle(
+                                color: CustomColors.primaryContextColor,
                                 fontSize: 16,
                                 fontFamily: 'avenir',
                               ),

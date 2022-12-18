@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import '../customs/theme.dart';
 
 class ClockView extends StatefulWidget {
   final double size;
@@ -20,9 +21,6 @@ class _ClockViewState extends State<ClockView> {
     });
     super.initState();
   }
-
-  final black87a = const Color.fromARGB(221, 26, 26, 26);
-  final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +43,6 @@ class _ClockViewState extends State<ClockView> {
 
 class ClockPainter extends CustomPainter {
   var dateTime = DateTime.now();
-  final bg = const Color.fromARGB(221, 26, 26, 26);
-  final primaryBlue = const Color.fromARGB(255, 82, 177, 255);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -55,12 +51,12 @@ class ClockPainter extends CustomPainter {
     var center = Offset(centerX, centerY);
     var radius = min(centerX, centerY);
 
-    var fillBrush = Paint()..color = bg;
+    var fillBrush = Paint()..color = CustomColors.backgroundColor;
     var outlineBrush = Paint()
-      ..color = primaryBlue
+      ..color = CustomColors.primaryBlue
       ..style = PaintingStyle.stroke
       ..strokeWidth = size.width / 30;
-    var centerFillBrush = Paint()..color = primaryBlue;
+    var centerFillBrush = Paint()..color = CustomColors.primaryBlue;
 
     var secHandBrush = Paint()
       ..color = Colors.orange[500]!
@@ -103,7 +99,7 @@ class ClockPainter extends CustomPainter {
     canvas.drawLine(center, Offset(hourHandX, hourHandY), hourHandBrush);
 
     var dashBrush = Paint()
-      ..color = const Color(0xFFEAECFF)
+      ..color = CustomColors.clockOutline
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 2;
