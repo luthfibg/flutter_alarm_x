@@ -25,7 +25,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
   DateTime? _alarmTime;
   late String _alarmTimeString;
   bool _isRepeatSelected = false;
-  AlarmHelper _alarmHelper = AlarmHelper();
+  final AlarmHelper _alarmHelper = AlarmHelper();
   Future<List<AlarmInfo>>? _alarms;
   List<AlarmInfo>? _currentAlarms;
 
@@ -91,7 +91,8 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                 offset: const Offset(4, 4),
                               ),
                             ],
-                            borderRadius: BorderRadius.all(Radius.circular(24)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(24)),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +108,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                         color: CustomColors.primaryContextColor,
                                         size: 24,
                                       ),
-                                      SizedBox(width: 8),
+                                      const SizedBox(width: 8),
                                       Text(
                                         alarm.title!,
                                         style: TextStyle(
@@ -140,7 +141,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                         ),
                                       ),
                                       IconButton(
-                                          icon: Icon(Icon.delete),
+                                          icon: const Icon(Icons.delete),
                                           color:
                                               CustomColors.primaryContextColor,
                                           onPressed: () {
@@ -159,14 +160,14 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                             strokeWidth: 2,
                             color: CustomColors.clockOutline,
                             borderType: BorderType.RRect,
-                            radius: Radius.circular(24),
-                            dashPattern: [5, 4],
+                            radius: const Radius.circular(24),
+                            dashPattern: const [5, 4],
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: CustomColors.clockBackground,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(24)),
+                                    const BorderRadius.all(Radius.circular(24)),
                               ),
                               child: MaterialButton(
                                 padding: const EdgeInsets.symmetric(
@@ -178,7 +179,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                     useRootNavigator: true,
                                     context: context,
                                     clipBehavior: Clip.antiAlias,
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.vertical(
                                         top: Radius.circular(24),
                                       ),
@@ -221,13 +222,13 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                                   },
                                                   child: Text(
                                                     _alarmTimeString,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 32,
                                                     ),
                                                   ),
                                                 ),
                                                 ListTile(
-                                                  title: Text('Repeat'),
+                                                  title: const Text('Repeat'),
                                                   trailing: Switch(
                                                     onChanged: (value) {
                                                       setModalState(() {
@@ -238,12 +239,12 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                                     value: _isRepeatSelected,
                                                   ),
                                                 ),
-                                                ListTile(
+                                                const ListTile(
                                                   title: Text('Sound'),
                                                   trailing: Icon(
                                                       Icons.arrow_forward_ios),
                                                 ),
-                                                ListTile(
+                                                const ListTile(
                                                   title: Text('Title'),
                                                   trailing: Icon(
                                                       Icons.arrow_forward_ios),
@@ -253,8 +254,8 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                                     onSaveAlarm(
                                                         _isRepeatSelected);
                                                   },
-                                                  icon: Icons.alarm,
-                                                  label: Text('Save'),
+                                                  icon: const Icon(Icons.alarm),
+                                                  label: const Text('Save'),
                                                 ),
                                               ],
                                             ),
@@ -270,7 +271,7 @@ class _MyAlarmState extends State<MyAlarm> with SingleTickerProviderStateMixin {
                                       'assets/add.png',
                                       scale: 1.5,
                                     ),
-                                    SizedBox(height: 8),
+                                    const SizedBox(height: 8),
                                     Text(
                                       'Add Alarm',
                                       style: TextStyle(
